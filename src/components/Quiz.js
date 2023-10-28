@@ -29,8 +29,9 @@ function Quiz(props) {
           transitionAppear
           transitionAppearTimeout={500}
       >
-        <div key={props.questionId}>
+        <div className="quiz-container" key={props.questionId}>
           <QuestionCount counter={props.questionId} total={props.questionTotal}/>
+          <progress value={props.questionId} max={props.questionTotal}/>
           <Question content={props.question}/>
           <ul className="answerOptions">
             {props.answerOptions.map(renderAnswerOptions)}

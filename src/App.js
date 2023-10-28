@@ -4,8 +4,10 @@ import quizResult from './api/quizResult';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
 import Button from './components/Button';
-import logo from './svg/logo.svg';
+import 'normalize.css';
 import './App.css';
+import IntroScreen from "./components/IntroScreen";
+import FinishVideo from "./components/FinishVideo";
 
 
 class App extends Component {
@@ -19,8 +21,12 @@ class App extends Component {
       answerOptions: [],
       answer: '',
       answersCount: {},
+      intro: false,
       result: '',
+      finish: false,
       resultText: '',
+      resultHeader: '',
+      resultImg: '',
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -54,6 +60,14 @@ class App extends Component {
     }
 
     return array;
+  }
+
+  onChangeFinishBtn = () => {
+    this.setState({finish: true})
+  }
+
+  onChangeStartBtn = () => {
+    this.setState({intro: true})
   }
 
   handleAnswerSelected(event) {
@@ -103,6 +117,8 @@ class App extends Component {
     const count = Math.floor(Math.random() * (result.length - 1));
     this.setState({result: result[count]});
     this.setState({resultText: quizResult.find(resultQuestion => resultQuestion.type === result[count]).content});
+    this.setState({resultHeader: quizResult.find(resultQuestion => resultQuestion.type === result[count]).header});
+    this.setState({resultImg: quizResult.find(resultQuestion => resultQuestion.type === result[count]).image});
 
   }
 
@@ -121,26 +137,29 @@ class App extends Component {
   }
 
   renderResult() {
-    return <Result quizResult={this.state.result} quizText={this.state.resultText}/>;
+    return <Result finishPressBtn={this.onChangeFinishBtn} quizResult={this.state.result}
+                   quizText={this.state.resultText} quizHeader={this.state.resultHeader}
+                   resultImg={this.state.resultImg}/>;
   }
 
-  renderHeaderQuestion() {
-    return <img src={logo} className="App-logo" alt="logo"/>;
+  renderFinish() {
+    return <FinishVideo/>;
   }
+
 
   renderHeaderResult() {
     return <Button/>;
   }
 
+
+  renderIntroText() {
+    return <IntroScreen start={this.onChangeStartBtn}/>;
+  }
+
   render() {
     return (
         <div className="App">
-          <div className="App-header">
-            {this.state.result ? this.renderHeaderResult() : this.renderHeaderQuestion()}
-
-            <h2>Квиз</h2>
-          </div>
-          {this.state.result ? this.renderResult() : this.renderQuiz()}
+          {this.state.intro ? this.state.result ? this.state.finish ? this.renderFinish() : this.renderResult() : this.renderQuiz() : this.renderIntroText()}
         </div>
     );
   }

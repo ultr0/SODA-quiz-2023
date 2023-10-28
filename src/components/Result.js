@@ -6,7 +6,7 @@ import {CSSTransitionGroup} from 'react-transition-group';
 function Result(props) {
   return (
       <CSSTransitionGroup
-          className="container result"
+          className="result-container"
           component="div"
           transitionName="fade"
           transitionEnterTimeout={800}
@@ -15,19 +15,28 @@ function Result(props) {
           transitionAppearTimeout={500}
       >
 
-        <div>
-          Ваш выбор <strong>{props.quizResult}</strong>!
+        <div className={`img-result ${props.resultImg}`}>
+
         </div>
-        <div>
-          {props.quizText}
+        <div className="text-result">
+          <div className="text-result-wrapper">
+
+            <h1>{props.quizHeader}</h1>
+            <p>{props.quizText}</p>
+
+          </div>
         </div>
+        <button className='result-btn' onClick={props.finishPressBtn}>Далее</button>
       </CSSTransitionGroup>
   );
 }
 
 Result.propTypes = {
   quizResult: PropTypes.string.isRequired,
-  quizText: PropTypes.string.isRequired
+  quizText: PropTypes.string.isRequired,
+  quizHeader: PropTypes.string.isRequired,
+  resultImg: PropTypes.string.isRequired,
+  finishPressBtn: PropTypes.func.isRequired
 };
 
 export default Result;
