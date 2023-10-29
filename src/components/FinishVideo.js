@@ -1,4 +1,5 @@
 import React from 'react';
+import iconHome from '../res/svg/home.svg';
 import {CSSTransitionGroup} from 'react-transition-group';
 
 
@@ -29,7 +30,8 @@ function FinishVideo(props) {
 
                     </div>
                 </div>
-                <button className="finish-btn" onClick={refreshPage}>Домой</button>
+                <button className="finish-btn" onClick={refreshPage}><img src={iconHome} className="home-btn"
+                                                                          alt="home"/></button>
             </div>
         </CSSTransitionGroup>
     );
