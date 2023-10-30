@@ -16,6 +16,7 @@ function createWindow() {
             enableRemoteModule: true
         }
     })
+    // win.webContents.openDevTools();
 
     win.loadURL(
         isDev

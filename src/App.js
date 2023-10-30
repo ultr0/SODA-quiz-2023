@@ -35,7 +35,9 @@ class App extends Component {
   componentDidMount() {
     const shuffledAnswerOptions = quizQuestions.map(question =>
         this.shuffleArray(question.answers)
+        // question.answers
     );
+    // console.log(shuffledAnswerOptions);
     this.setState({
       question: quizQuestions[0].question,
       answerOptions: shuffledAnswerOptions[0]

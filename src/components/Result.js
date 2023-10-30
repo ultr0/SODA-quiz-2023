@@ -15,7 +15,7 @@ function Result(props) {
           transitionAppearTimeout={500}
       >
 
-        <div className={`img-result ${process.env.PUBLIC_URL + props.resultImg}`}>
+        <div className={`img-result ${props.resultImg}`}>
 
         </div>
         <div className="text-result">

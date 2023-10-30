@@ -1,6 +1,6 @@
 {
   "name": "quiz-kavkaz",
-  "version": "0.2.5",
+  "version": "0.2.9",
   "private": true,
   "main": "public/main.js",
   "homepage": "./",
@@ -10,7 +10,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron:serve": "concurrently -k \"cross-env BROWSER=none yarn start\" \"yarn electron:start\"",
-    "electron:build": "yarn build && electron-builder -c.extraMetadata.main=build/main.js",
+    "electron:build": "yarn build && electron-builder  -c.extraMetadata.main=build/main.js",
     "electron:start": "wait-on tcp:3000 && electron ."
   },
   "author": {
@@ -50,6 +50,12 @@
     "directories": {
       "buildResources": "assets"
     },
+    "extraResources": [
+      {
+        "from": "./public/questions",
+        "to": "questions"
+      }
+    ],
     "win": {
       "icon": "public/favicon.png"
     },

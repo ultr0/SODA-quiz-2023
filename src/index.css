@@ -6,10 +6,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
-}
 
 * {
   box-sizing: border-box;
@@ -19,7 +15,7 @@ body {
   margin: 0;
   padding: 0;
   background: #eee;
-  font-family: sans-serif;
+  font-family: Geometria, serif;
 }
 
 .container {

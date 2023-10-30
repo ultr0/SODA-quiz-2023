@@ -16,6 +16,7 @@ function AnswerOption(props) {
             />
             <label className="radioCustomLabel" htmlFor={props.answerType}>
                 <div className='labelImage' style={{backgroundImage: `url(${props.answerImg})`}}></div>
+                {/*<div className='labelImage' style={{backgroundImage: `url(${process.env.PUBLIC_URL}/questions/q${props.questionId}/${props.answerNumber}.png)`}}></div>*/}
                 <div className='labelText'><p>{props.answerContent}</p></div>
 
             </label>
@@ -27,6 +28,8 @@ AnswerOption.propTypes = {
     answerType: PropTypes.string.isRequired,
     answerContent: PropTypes.string.isRequired,
     answerImg: PropTypes.string.isRequired,
+    answerNumber: PropTypes.number.isRequired,
+    questionNumber: PropTypes.number.isRequired,
     answer: PropTypes.string.isRequired,
     onAnswerSelected: PropTypes.func.isRequired
 };
