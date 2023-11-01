@@ -1,22 +1,97 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Geometria-Bold", Helvetica, serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria Light'), local('Geometria-Light'),
+  url('fonts/subset-Geometria-Light.woff2') format('woff2'),
+  url('fonts/subset-Geometria-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria LightItalic'), local('Geometria-LightItalic'),
+  url('fonts/subset-Geometria-LightItalic.woff2') format('woff2'),
+  url('fonts/subset-Geometria-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria ExtraBold'), local('Geometria-ExtraBold'),
+  url('fonts/subset-Geometria-ExtraBold.woff2') format('woff2'),
+  url('fonts/subset-Geometria-ExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria MediumItalic'), local('Geometria-MediumItalic'),
+  url('fonts/subset-Geometria-MediumItalic.woff2') format('woff2'),
+  url('fonts/subset-Geometria-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria BoldItalic'), local('Geometria-BoldItalic'),
+  url('fonts/subset-Geometria-BoldItalic.woff2') format('woff2'),
+  url('fonts/subset-Geometria-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria Bold'), local('Geometria-Bold'),
+  url('fonts/subset-Geometria-Bold.woff2') format('woff2'),
+  url('fonts/subset-Geometria-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria Medium'), local('Geometria-Medium'),
+  url('fonts/subset-Geometria-Medium.woff2') format('woff2'),
+  url('fonts/subset-Geometria-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: 'Geometria';
+  src: local('Geometria Medium'), local('Geometria-Medium'),
+  url('fonts/subset-Geometria-Medium.woff2') format('woff2'),
+  url('fonts/subset-Geometria-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
   margin: 0;
   padding: 0;
   background: #eee;
-  font-family: Geometria, serif;
+  font-family: Geometria, 'Geometria', Helvetica, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+* {
+  box-sizing: border-box;
+}
+
 
 .container {
   position: relative;
@@ -89,13 +164,21 @@ body {
 .intro-fox {
   position: absolute;
   bottom: 0;
-  right: 3.434vw;
   width: 39.72vh;
   height: 39.72vh;
   background-image: url("./res/webp/fox.webp");
   background-size: contain;
   background-position: bottom;
   background-repeat: no-repeat;
+}
+
+.fox-position-r {
+  right: 3.434vw;
+}
+
+.fox-position-l {
+  left: 3.434vw;
+  transform: scale(-1, 1)
 }
 
 @media (max-width: 769px) {
@@ -115,6 +198,7 @@ body {
   margin-top: 7.592vh;
   margin-left: 4.797vw;
   gap: 2.129vh;
+  width: 76.46vw;
 }
 
 .quiz-container progress[value] {
@@ -280,12 +364,12 @@ body {
 
 .finish-btn {
   position: absolute;
-  top: 80vh;
-  left: 82.879vw;
+  top: 1vh;
+  left: 1vw;
   background-color: #79a1c6;
   border-radius: 20px;
-  height: 9.259vh;
-  width: 7.575vw;
+  height: 7.4072vh;
+  width: 6.06vw;
   color: #ffffff;
 
   font-size: 28px;
@@ -325,7 +409,7 @@ body {
 /* Question Component */
 .question {
   color: #000;
-  font-size: 52px;
+  font-size: 4.81vh;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -388,7 +472,9 @@ body {
 }
 
 .home-btn {
-
+  height: 100%;
+  width: auto;
+  padding: 6px;
 }
 
 .radioCustomButton:checked ~ .radioCustomLabel:before {
@@ -407,6 +493,10 @@ body {
   height: 7.685vh;
   display: flex;
   align-items: center;
+}
+
+.labelText p {
+  padding: 0 22px;
 }
 
 /* Animation */

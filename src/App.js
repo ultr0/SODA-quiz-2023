@@ -3,11 +3,12 @@ import quizQuestions from './api/quizQuestions';
 import quizResult from './api/quizResult';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
-import Button from './components/Button';
 import 'normalize.css';
 import './App.css';
 import IntroScreen from "./components/IntroScreen";
 import FinishVideo from "./components/FinishVideo";
+import HomeButton from "./components/HomeButton";
+import LoadScreen from "./components/LoadScreen";
 
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
       resultText: '',
       resultHeader: '',
       resultImg: '',
+      startWait: true
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -34,8 +36,8 @@ class App extends Component {
 
   componentDidMount() {
     const shuffledAnswerOptions = quizQuestions.map(question =>
-        this.shuffleArray(question.answers)
-        // question.answers
+        // this.shuffleArray(question.answers)
+        question.answers
     );
     // console.log(shuffledAnswerOptions);
     this.setState({
@@ -148,11 +150,13 @@ class App extends Component {
     return <FinishVideo/>;
   }
 
-
-  renderHeaderResult() {
-    return <Button/>;
+  renderHomeButton() {
+    return <HomeButton/>;
   }
 
+  renderLoadScreen() {
+    return <LoadScreen/>;
+  }
 
   renderIntroText() {
     return <IntroScreen start={this.onChangeStartBtn}/>;
@@ -161,6 +165,7 @@ class App extends Component {
   render() {
     return (
         <div className="App">
+          {this.state.intro ? this.renderHomeButton() : null}
           {this.state.intro ? this.state.result ? this.state.finish ? this.renderFinish() : this.renderResult() : this.renderQuiz() : this.renderIntroText()}
         </div>
     );

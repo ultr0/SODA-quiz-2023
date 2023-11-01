@@ -23,7 +23,7 @@ function IntroScreen(props) {
                     <button className="intro-btn" onClick={props.start}>Начать</button>
                 </div>
 
-                <div className="intro-fox"></div>
+                <div className="intro-fox fox-position-r"></div>
 
             </div>
         </CSSTransitionGroup>

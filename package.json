@@ -14,18 +14,20 @@
     "electron:start": "wait-on tcp:3000 && electron ."
   },
   "author": {
-    "name": "2ром",
+    "name": "SODA PRODUCTION",
     "email": "mail@2rom.ru",
     "url": "https://2rom.ru"
   },
   "productName": "Квиз курортов",
   "dependencies": {
     "@electron/remote": "^2.0.12",
+    "@ramonak/react-progress-bar": "^5.0.3",
     "electron-is-dev": "^2.0.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-idle-timer": "^5.7.2",
     "react-scripts": "5.0.1",
     "react-transition-group": "^1.2.1",
     "wait-on": "^7.0.1"
@@ -57,7 +59,7 @@
       }
     ],
     "win": {
-      "icon": "public/favicon.png"
+      "icon": "public/favicon.ico"
     },
     "mac": {
       "icon": "public/favicon.png"

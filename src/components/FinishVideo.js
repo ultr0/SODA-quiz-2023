@@ -1,13 +1,8 @@
 import React from 'react';
-import iconHome from '../res/svg/home.svg';
 import {CSSTransitionGroup} from 'react-transition-group';
 
 
-function refreshPage() {
-    window.location.reload(false);
-}
-
-function FinishVideo(props) {
+function FinishVideo() {
 
     return (
         <CSSTransitionGroup
@@ -30,8 +25,6 @@ function FinishVideo(props) {
 
                     </div>
                 </div>
-                <button className="finish-btn" onClick={refreshPage}><img src={iconHome} className="home-btn"
-                                                                          alt="home"/></button>
             </div>
         </CSSTransitionGroup>
     );

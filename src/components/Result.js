@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {CSSTransitionGroup} from 'react-transition-group';
+import {useInterval} from '../hooks/useInterval';
 
+const ONE_SECOND = 1000;
+const ONE_MINUTE = 60;
 
 function Result(props) {
+  const [timeLeft, setTimeLeft] = useInterval(ONE_MINUTE / 12, ONE_SECOND);
+
   return (
       <CSSTransitionGroup
           className="result-container"
@@ -16,7 +21,6 @@ function Result(props) {
       >
 
         <div className={`img-result ${props.resultImg}`}>
-
         </div>
         <div className="text-result">
           <div className="text-result-wrapper">

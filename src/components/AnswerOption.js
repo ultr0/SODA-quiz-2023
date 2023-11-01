@@ -15,8 +15,8 @@ function AnswerOption(props) {
                 onChange={props.onAnswerSelected}
             />
             <label className="radioCustomLabel" htmlFor={props.answerType}>
-                <div className='labelImage' style={{backgroundImage: `url(${props.answerImg})`}}></div>
-                {/*<div className='labelImage' style={{backgroundImage: `url(${process.env.PUBLIC_URL}/questions/q${props.questionId}/${props.answerNumber}.png)`}}></div>*/}
+                <div className='labelImage'
+                     style={{backgroundImage: `url(${process.env.PUBLIC_URL + props.answerImg})`}}></div>
                 <div className='labelText'><p>{props.answerContent}</p></div>
 
             </label>
