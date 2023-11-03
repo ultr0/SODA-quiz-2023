@@ -9,9 +9,9 @@ function Result(props) {
     const [isVisible, setIsVisible] = React.useState(true);
 
     React.useEffect(function () {
-        const timeout = setTimeout(function () {
-            setIsVisible(false);
-        }, 3000)
+       setTimeout(function () {
+           setIsVisible(false);
+       }, 3000)
     },)
 
     return isVisible ? <LoadScreen/> : (
@@ -36,13 +36,10 @@ function Result(props) {
                     <p>{props.quizText}</p>
 
                 </div>
-                <div className='btn-wrapper btn-wrapper__result'>
-                    <button className='result-btn video-btn' onClick={props.videoPressBtn}>Посмотреть вдохновляющее
-                        видео
-                    </button>
-                    {props.quizURL ?
-                        <button className='result-btn portal-btn' onClick={props.portalPressBtn}>Познакомиться с
-                            курортом на сайте</button> : null}
+                <div className='qr-wrapper'>
+                    <img className='qr-img' src={`/qr/${props.resultQR}`} alt='qr-code'/>
+
+                    <p className='qr-text'>Узнайте больше о курорте на портале Кавказ.РФ</p>
                 </div>
                 <HomeButton position='home-btn__result'/>
             </div>
@@ -58,8 +55,7 @@ Result.propTypes = {
     quizURL: PropTypes.string.isRequired,
     quizHeader: PropTypes.string.isRequired,
     resultImg: PropTypes.string.isRequired,
-    videoPressBtn: PropTypes.func.isRequired,
-    portalPressBtn: PropTypes.func.isRequired
+    resultQR: PropTypes.string.isRequired
 };
 
 export default Result;

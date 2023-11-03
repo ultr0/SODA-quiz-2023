@@ -5,6 +5,7 @@ import Question from '../components/Question';
 import QuestionCount from '../components/QuestionCount';
 import AnswerOption from '../components/AnswerOption';
 import ProgressBar from "@ramonak/react-progress-bar";
+import HomeButton from "./HomeButton";
 
 function Quiz(props) {
     function renderAnswerOptions(key) {
@@ -42,6 +43,7 @@ function Quiz(props) {
                     {props.answerOptions.map(renderAnswerOptions)}
                 </ul>
             </div>
+            <HomeButton position='home-btn__quiz'/>
         </CSSTransitionGroup>
     );
 }

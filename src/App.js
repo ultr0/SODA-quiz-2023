@@ -6,10 +6,6 @@ import Result from './components/Result';
 import 'normalize.css';
 import './App.css';
 import IntroScreen from "./components/IntroScreen";
-import FinishVideo from "./components/FinishVideo";
-
-import LoadScreen from "./components/LoadScreen";
-import Portal from "./components/Portal";
 
 
 class App extends Component {
@@ -28,12 +24,10 @@ class App extends Component {
       resultHeader: '',
       resultImg: '',
       resultURL: '',
-      startWait: true,
+      resultQR: '',
       isIntro: true,
       isQuiz: false,
       isFinish: false,
-      isVideo: false,
-      isPortal: false
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -41,55 +35,14 @@ class App extends Component {
 
   componentDidMount() {
     const shuffledAnswerOptions = quizQuestions.map(question =>
-        // this.shuffleArray(question.answers)
         question.answers
     );
-    // console.log(shuffledAnswerOptions);
     this.setState({
       question: quizQuestions[0].question,
       answerOptions: shuffledAnswerOptions[0]
     });
   }
 
-  shuffleArray(array) {
-    let currentIndex = array.length,
-        temporaryValue,
-        randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  }
-
-  onChangeVideoBtn = () => {
-    this.setState({isVideo: true})
-    this.setState({isFinish: false})
-  }
-
-  onChangePortalBtn = () => {
-    this.setState({isPortal: true})
-    this.setState({isFinish: false})
-  }
-
-  onChangeBackVideoBtn = () => {
-    this.setState({isVideo: false})
-    this.setState({isFinish: true})
-  }
-
-  onChangeBackPortalBtn = () => {
-    this.setState({isPortal: false})
-    this.setState({isFinish: true})
-  }
 
   onChangeStartBtn = () => {
     this.setState({isIntro: false})
@@ -148,6 +101,7 @@ class App extends Component {
     this.setState({resultHeader: quizResult.find(resultQuestion => resultQuestion.type === result[count]).header});
     this.setState({resultImg: quizResult.find(resultQuestion => resultQuestion.type === result[count]).image});
     this.setState({resultURL: quizResult.find(resultQuestion => resultQuestion.type === result[count]).url});
+    this.setState({resultQR: quizResult.find(resultQuestion => resultQuestion.type === result[count]).qr});
 
   }
 
@@ -166,23 +120,10 @@ class App extends Component {
   }
 
   renderResult() {
-    return <Result videoPressBtn={this.onChangeVideoBtn} portalPressBtn={this.onChangePortalBtn}
+    return <Result resultQR={this.state.resultQR}
                    quizResult={this.state.result}
                    quizText={this.state.resultText} quizHeader={this.state.resultHeader} quizURL={this.state.resultURL}
                    resultImg={this.state.resultImg}/>;
-  }
-
-  renderVideo() {
-    return <FinishVideo resultPressBtn={this.onChangeBackVideoBtn}/>;
-  }
-
-  renderPortal() {
-    return <Portal quizURL={this.state.resultURL} resultPressBtn={this.onChangeBackPortalBtn}/>;
-  }
-
-
-  renderLoadScreen() {
-    return <LoadScreen/>;
   }
 
   renderIntroText() {
@@ -192,13 +133,9 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-
           {this.state.isIntro ? this.renderIntroText() : null}
           {this.state.isQuiz ? this.renderQuiz() : null}
           {this.state.isFinish ? this.renderResult() : null}
-          {this.state.isVideo ? this.renderVideo() : null}
-          {this.state.isPortal ? this.renderPortal() : null}
-
         </div>
     );
   }
