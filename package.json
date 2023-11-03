@@ -1,6 +1,6 @@
 {
   "name": "quiz-kavkaz",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "private": true,
   "main": "public/main.js",
   "homepage": "./",
@@ -14,7 +14,7 @@
     "electron:start": "wait-on tcp:3000 && electron ."
   },
   "author": {
-    "name": "SODA PRODUCTION",
+    "name": "SODA PRODUCTION х 2ром",
     "email": "mail@2rom.ru",
     "url": "https://2rom.ru"
   },
@@ -42,7 +42,7 @@
   },
   "build": {
     "extends": null,
-    "appId": "com.videosoda.quiz",
+    "appId": "ru.videosoda.quiz",
     "files": [
       "dist/**/*",
       "build/**/*",

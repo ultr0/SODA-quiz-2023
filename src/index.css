@@ -122,12 +122,12 @@ body {
 .text-header {
 
 
-  width: 97.75rem;
+  width: 78.91vw;
 
   color: #FFF;
   text-align: center;
 
-  font-size: 5.625rem;
+  font-size: 8.333vh;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -138,7 +138,7 @@ body {
 
   -webkit-text-stroke: 0.3px #ffffff;
   color: #ffffff;
-  font-size: 52px;
+  font-size: 4.81481481vh;
   font-weight: 300;
   letter-spacing: 0;
   line-height: normal;
@@ -149,12 +149,12 @@ body {
 .intro-btn {
   background-color: #79a1c6;
   border-radius: 20px;
-  width: 555px;
-  height: 114px;
+  width: 28.90625vw;
+  height: 10.556vh;
   flex-shrink: 0;
 
   color: #FFF;
-  font-size: 60px;
+  font-size: 5.56vh; /*60px;*/
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -166,7 +166,7 @@ body {
   bottom: 0;
   width: 39.72vh;
   height: 39.72vh;
-  background-image: url("./res/webp/fox.webp");
+  background-image: url("./res/webp/fox-ani.webp");
   background-size: contain;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -238,7 +238,7 @@ body {
 
   position: absolute;
   top: 14.814vh;
-  left: 4.595vw;
+  left: 4.6vw;
   width: 88.03vw;
   height: 70.6481vh;
 
@@ -249,13 +249,14 @@ body {
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: flex-start;
-  margin-top: 14.44vh;
+  margin-top: 9.259vh;
   margin-left: 46.717vw;
 }
 
 .result-container h1 {
+  margin: 0;
   color: #497798;
-  font-size: 52px;
+  font-size: 4.814814814814815vh;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -264,28 +265,77 @@ body {
 
 .result-container p {
   color: #000;
-  width: 35.9vw;
-  font-size: 34px;
+  width: 37.03125vw;
+  font-size: 2.778vh;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 }
 
-.result-btn {
+.btn-wrapper {
   position: absolute;
-  top: 80.370vh;
-  left: 73.5859vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.7154vw;
+}
+
+.btn-wrapper__video {
+  bottom: 6.88889vh;
+  left: 44.29464999999999vw;
+}
+
+.btn-wrapper__portal {
+  bottom: 3.88889vh;
+  left: 44.29464999999999vw;
+}
+
+.btn-wrapper__result {
+  bottom: 8.88889vh;
+  left: 48.8vw;
+}
+
+.result-btn {
+  border-radius: 19.059px;
+  border: 3px solid #497798;
+  background: #FFF;
+
+  width: 16.47vw;
+  height: 7.85287vh;
+  color: #497798;
+  text-align: center;
+  font-size: 2.11759259vh;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 22.87px */
+}
+
+.video-btn {
+}
+
+.portal-btn {
+}
+
+.home-btn__result {
+  position: absolute;
+  top: 65.37vh;
+  right: 2.068617558vw;
+}
+
+.home-btn {
+
   background-color: #79a1c6;
   border-radius: 20px;
-  height: 89px;
-  width: 334px;
+  height: 8.24vh;
+  width: 8.24vh;
   color: #ffffff;
+}
 
-  font-size: 28px;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: normal;
-  text-align: center;
+.home-img {
+  height: 60%;
+  width: auto;
+  padding: 6px;
 }
 
 .img-result {
@@ -338,7 +388,7 @@ body {
 .finish-container h1 {
   margin-top: 13.05vh;
   color: #FFF;
-  font-size: 70px;
+  font-size: 6.481481vh;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -355,28 +405,32 @@ body {
 
   color: #C8C8C8;
   text-align: center;
-  font-size: 79.151px;
+  font-size: 7.314814vh;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   text-transform: uppercase;
 }
 
-.finish-btn {
-  position: absolute;
-  top: 1vh;
-  left: 1vw;
-  background-color: #79a1c6;
-  border-radius: 20px;
-  height: 7.4072vh;
-  width: 6.06vw;
-  color: #ffffff;
+.portal {
+  margin-top: 6vh
+}
 
-  font-size: 28px;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: normal;
+.portal-wrapper {
+  border-radius: 13.545px;
+  background: #FFF;
+  box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.25);
+  width: 87.84vw;
+  height: 85.6481vh;
+  flex-shrink: 0;
+
+  color: #C8C8C8;
   text-align: center;
+  font-size: 7.314814vh;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
 }
 
 
@@ -399,7 +453,7 @@ body {
 /* QuestionCount Component */
 .questionCount {
   color: #000;
-  font-size: 36px;
+  font-size: 3.33vh;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
@@ -446,7 +500,7 @@ body {
   background: #FFF;
   color: #000;
   text-align: center;
-  font-size: 24px;
+  font-size: 2.2222vh;
   font-style: normal;
   font-weight: 500;
   line-height: 100%; /* 24px */
@@ -471,11 +525,6 @@ body {
   display: none;
 }
 
-.home-btn {
-  height: 100%;
-  width: auto;
-  padding: 6px;
-}
 
 .radioCustomButton:checked ~ .radioCustomLabel:before {
   display: none;

@@ -1,8 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {CSSTransitionGroup} from 'react-transition-group';
 
-function LoadScreen(props) {
+function LoadScreen() {
     return (
         <CSSTransitionGroup
             className="con"
@@ -25,8 +24,5 @@ function LoadScreen(props) {
     );
 };
 
-LoadScreen.propTypes = {
-    start: PropTypes.func.isRequired
-};
 
 export default LoadScreen;

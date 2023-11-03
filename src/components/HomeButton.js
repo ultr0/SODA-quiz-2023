@@ -2,15 +2,15 @@ import React from 'react';
 import iconHome from '../res/svg/home.svg';
 
 
-function refreshPage() {
+function refreshPage(props) {
     window.location.reload(false);
 }
 
 function HomeButton(props) {
     return (
 
-        <button className="finish-btn" onClick={refreshPage}>
-            <img src={iconHome} className="home-btn" alt="home"/>
+        <button className={`home-btn ${props.position}`} onClick={refreshPage}>
+            <img src={iconHome} className="home-img" alt="home"/>
         </button>
 
     );
@@ -18,3 +18,4 @@ function HomeButton(props) {
 
 
 export default HomeButton;
+

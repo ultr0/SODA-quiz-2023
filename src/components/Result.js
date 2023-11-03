@@ -1,46 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {CSSTransitionGroup} from 'react-transition-group';
-import {useInterval} from '../hooks/useInterval';
+import HomeButton from "./HomeButton";
+import LoadScreen from "./LoadScreen";
 
-const ONE_SECOND = 1000;
-const ONE_MINUTE = 60;
 
 function Result(props) {
-  const [timeLeft, setTimeLeft] = useInterval(ONE_MINUTE / 12, ONE_SECOND);
+    const [isVisible, setIsVisible] = React.useState(true);
 
-  return (
-      <CSSTransitionGroup
-          className="result-container"
-          component="div"
-          transitionName="fade"
-          transitionEnterTimeout={800}
-          transitionLeaveTimeout={500}
-          transitionAppear
-          transitionAppearTimeout={500}
-      >
+    React.useEffect(function () {
+        const timeout = setTimeout(function () {
+            setIsVisible(false);
+        }, 3000)
+    },)
 
-        <div className={`img-result ${props.resultImg}`}>
-        </div>
-        <div className="text-result">
-          <div className="text-result-wrapper">
+    return isVisible ? <LoadScreen/> : (
 
-            <h1>{props.quizHeader}</h1>
-            <p>{props.quizText}</p>
 
-          </div>
-        </div>
-        <button className='result-btn' onClick={props.finishPressBtn}>Далее</button>
-      </CSSTransitionGroup>
-  );
+        <CSSTransitionGroup
+            className="result-container"
+            component="div"
+            transitionName="fade"
+            transitionEnterTimeout={800}
+            transitionLeaveTimeout={500}
+            transitionAppear
+            transitionAppearTimeout={500}
+        >
+
+            <div className={`img-result ${props.resultImg}`}>
+            </div>
+            <div className="text-result">
+                <div className="text-result-wrapper">
+
+                    <h1>{props.quizHeader}</h1>
+                    <p>{props.quizText}</p>
+
+                </div>
+                <div className='btn-wrapper btn-wrapper__result'>
+                    <button className='result-btn video-btn' onClick={props.videoPressBtn}>Посмотреть вдохновляющее
+                        видео
+                    </button>
+                    {props.quizURL ?
+                        <button className='result-btn portal-btn' onClick={props.portalPressBtn}>Познакомиться с
+                            курортом на сайте</button> : null}
+                </div>
+                <HomeButton position='home-btn__result'/>
+            </div>
+
+
+        </CSSTransitionGroup>
+    );
 }
 
 Result.propTypes = {
-  quizResult: PropTypes.string.isRequired,
-  quizText: PropTypes.string.isRequired,
-  quizHeader: PropTypes.string.isRequired,
-  resultImg: PropTypes.string.isRequired,
-  finishPressBtn: PropTypes.func.isRequired
+    quizResult: PropTypes.string.isRequired,
+    quizText: PropTypes.string.isRequired,
+    quizURL: PropTypes.string.isRequired,
+    quizHeader: PropTypes.string.isRequired,
+    resultImg: PropTypes.string.isRequired,
+    videoPressBtn: PropTypes.func.isRequired,
+    portalPressBtn: PropTypes.func.isRequired
 };
 
 export default Result;

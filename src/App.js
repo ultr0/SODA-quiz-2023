@@ -7,8 +7,9 @@ import 'normalize.css';
 import './App.css';
 import IntroScreen from "./components/IntroScreen";
 import FinishVideo from "./components/FinishVideo";
-import HomeButton from "./components/HomeButton";
+
 import LoadScreen from "./components/LoadScreen";
+import Portal from "./components/Portal";
 
 
 class App extends Component {
@@ -22,13 +23,17 @@ class App extends Component {
       answerOptions: [],
       answer: '',
       answersCount: {},
-      intro: false,
       result: '',
-      finish: false,
       resultText: '',
       resultHeader: '',
       resultImg: '',
-      startWait: true
+      resultURL: '',
+      startWait: true,
+      isIntro: true,
+      isQuiz: false,
+      isFinish: false,
+      isVideo: false,
+      isPortal: false
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -47,7 +52,7 @@ class App extends Component {
   }
 
   shuffleArray(array) {
-    var currentIndex = array.length,
+    let currentIndex = array.length,
         temporaryValue,
         randomIndex;
 
@@ -66,12 +71,29 @@ class App extends Component {
     return array;
   }
 
-  onChangeFinishBtn = () => {
-    this.setState({finish: true})
+  onChangeVideoBtn = () => {
+    this.setState({isVideo: true})
+    this.setState({isFinish: false})
+  }
+
+  onChangePortalBtn = () => {
+    this.setState({isPortal: true})
+    this.setState({isFinish: false})
+  }
+
+  onChangeBackVideoBtn = () => {
+    this.setState({isVideo: false})
+    this.setState({isFinish: true})
+  }
+
+  onChangeBackPortalBtn = () => {
+    this.setState({isPortal: false})
+    this.setState({isFinish: true})
   }
 
   onChangeStartBtn = () => {
-    this.setState({intro: true})
+    this.setState({isIntro: false})
+    this.setState({isQuiz: true})
   }
 
   handleAnswerSelected(event) {
@@ -120,9 +142,12 @@ class App extends Component {
 
     const count = Math.floor(Math.random() * (result.length - 1));
     this.setState({result: result[count]});
+    this.setState({isQuiz: false});
+    this.setState({isFinish: true});
     this.setState({resultText: quizResult.find(resultQuestion => resultQuestion.type === result[count]).content});
     this.setState({resultHeader: quizResult.find(resultQuestion => resultQuestion.type === result[count]).header});
     this.setState({resultImg: quizResult.find(resultQuestion => resultQuestion.type === result[count]).image});
+    this.setState({resultURL: quizResult.find(resultQuestion => resultQuestion.type === result[count]).url});
 
   }
 
@@ -141,18 +166,20 @@ class App extends Component {
   }
 
   renderResult() {
-    return <Result finishPressBtn={this.onChangeFinishBtn} quizResult={this.state.result}
-                   quizText={this.state.resultText} quizHeader={this.state.resultHeader}
+    return <Result videoPressBtn={this.onChangeVideoBtn} portalPressBtn={this.onChangePortalBtn}
+                   quizResult={this.state.result}
+                   quizText={this.state.resultText} quizHeader={this.state.resultHeader} quizURL={this.state.resultURL}
                    resultImg={this.state.resultImg}/>;
   }
 
-  renderFinish() {
-    return <FinishVideo/>;
+  renderVideo() {
+    return <FinishVideo resultPressBtn={this.onChangeBackVideoBtn}/>;
   }
 
-  renderHomeButton() {
-    return <HomeButton/>;
+  renderPortal() {
+    return <Portal quizURL={this.state.resultURL} resultPressBtn={this.onChangeBackPortalBtn}/>;
   }
+
 
   renderLoadScreen() {
     return <LoadScreen/>;
@@ -165,8 +192,13 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-          {this.state.intro ? this.renderHomeButton() : null}
-          {this.state.intro ? this.state.result ? this.state.finish ? this.renderFinish() : this.renderResult() : this.renderQuiz() : this.renderIntroText()}
+
+          {this.state.isIntro ? this.renderIntroText() : null}
+          {this.state.isQuiz ? this.renderQuiz() : null}
+          {this.state.isFinish ? this.renderResult() : null}
+          {this.state.isVideo ? this.renderVideo() : null}
+          {this.state.isPortal ? this.renderPortal() : null}
+
         </div>
     );
   }

@@ -17,7 +17,7 @@ export function useInterval(time, delay) {
         const timerId = setInterval(tick, delay);
 
         // остановить если время истекло
-        if (timeLeft <= 0) clearInterval(id);
+        if (timeLeft <= 0) clearInterval(0);
 
         // очистить интервал
         return () => clearInterval(timerId);
