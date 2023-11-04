@@ -265,8 +265,8 @@ body {
 
 .result-container p {
   color: #000;
-  width: 37.03125vw;
-  font-size: 2.685vh;
+  width: 38.03125vw;
+  font-size: 2.5925925925925926vh;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -319,7 +319,8 @@ body {
 
 .home-btn__result {
   position: absolute;
-  top: 65.37vh;
+  /*top: 65.37vh;*/
+  bottom: -4.6299999999999955vh;
   right: 2.068617558vw;
 }
 
@@ -388,13 +389,16 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  height: 21.944444444444443vh;
 }
 
 .qr-img {
-
+  height: 100%;
+  width: auto;
 }
 
 .qr-wrapper .qr-text {
+  padding-bottom: 1.4vh;
   color: #497798;
   width: 18.6979vw;
   font-size: 2.222vh;

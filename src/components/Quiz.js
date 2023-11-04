@@ -6,8 +6,19 @@ import QuestionCount from '../components/QuestionCount';
 import AnswerOption from '../components/AnswerOption';
 import ProgressBar from "@ramonak/react-progress-bar";
 import HomeButton from "./HomeButton";
+import {useIdleTimer} from "react-idle-timer";
 
 function Quiz(props) {
+
+    const onIdle = () => {
+        window.location.reload(false);
+    }
+    const {getRemainingTime} = useIdleTimer({
+        onIdle,
+        timeout: 60_000,
+        throttle: 500
+    })
+
     function renderAnswerOptions(key) {
 
         return (
@@ -43,7 +54,7 @@ function Quiz(props) {
                     {props.answerOptions.map(renderAnswerOptions)}
                 </ul>
             </div>
-            <HomeButton position='home-btn__quiz'/>
+            <HomeButton position='home-btn__result'/>
         </CSSTransitionGroup>
     );
 }
