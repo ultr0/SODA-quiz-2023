@@ -13,7 +13,7 @@ function Quiz(props) {
     const onIdle = () => {
         window.location.reload(false);
     }
-    const {getRemainingTime} = useIdleTimer({
+    useIdleTimer({
         onIdle,
         timeout: 60_000,
         throttle: 500
