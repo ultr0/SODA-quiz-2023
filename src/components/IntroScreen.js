@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {CSSTransitionGroup} from 'react-transition-group';
+import Logo from "./Logo";
 
 function IntroScreen(props) {
     return (
@@ -14,6 +15,7 @@ function IntroScreen(props) {
             transitionAppearTimeout={500}
         >
             <div className="intro">
+                <Logo startPage='true' position='pos__logo__start'/>
                 <div className="intro-wrapper">
                     <p className="text-header">НАЙДИТЕ СВОЕ ИДЕАЛЬНОЕ МЕСТО ОТДЫХА</p>
                     <p className="text-description">

@@ -7,6 +7,7 @@ import AnswerOption from '../components/AnswerOption';
 import ProgressBar from "@ramonak/react-progress-bar";
 import HomeButton from "./HomeButton";
 import {useIdleTimer} from "react-idle-timer";
+import Logo from "./Logo";
 
 function Quiz(props) {
 
@@ -45,6 +46,7 @@ function Quiz(props) {
             transitionAppear
             transitionAppearTimeout={500}
         >
+            <Logo position='pos__logo__quiz'/>
             <div className="quiz-container" key={props.questionId}>
                 <QuestionCount counter={props.questionId} total={props.questionTotal}/>
                 <ProgressBar completed={props.questionId} maxCompleted={props.questionTotal} bgColor="#79A1C6"

@@ -43,7 +43,6 @@ function Result(props) {
 
                     <h1>{props.quizHeader}</h1>
                     <p dangerouslySetInnerHTML={{__html: props.quizText}}/>
-                    {/*<p>{props.quizText}</p>*/}
 
                 </div>
                 <div className='qr-wrapper'>
