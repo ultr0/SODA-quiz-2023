@@ -46,7 +46,8 @@ function Result(props) {
 
                 </div>
                 <div className='qr-wrapper'>
-                    <img className='qr-img' src={`${process.env.PUBLIC_URL}/qr/${props.resultQR}`} alt='qr-code'/>
+                    <img className='qr-img' style={props.quizResult == 'Мамисон' ? {height: '87%'} : null}
+                         src={`${process.env.PUBLIC_URL}/qr/${props.resultQR}`} alt='qr-code'/>
 
                     <p className='qr-text'>Узнайте больше о курорте <br/> на портале Кавказ.РФ</p>
                 </div>

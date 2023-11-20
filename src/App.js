@@ -43,6 +43,15 @@ class App extends Component {
     });
   }
 
+  onPressQuizHomeBtn = () => {
+    this.setState({isIntro: true})
+    this.setState({isQuiz: false})
+  }
+
+  onPressResultHomeBtn = () => {
+    this.setState({isIntro: true})
+    this.setState({isQuiz: false})
+  }
 
   onChangeStartBtn = () => {
     this.setState({isIntro: false})

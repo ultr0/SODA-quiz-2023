@@ -17,7 +17,7 @@ function AnswerOption(props) {
             <label className="radioCustomLabel" htmlFor={props.answerType}>
                 <div className='labelImage'
                      style={{backgroundImage: `url(${process.env.PUBLIC_URL + props.answerImg})`}}></div>
-                <div className='labelText'><p>{props.answerContent}</p></div>
+                <div className='labelText'><p dangerouslySetInnerHTML={{__html: props.answerContent}}/></div>
 
             </label>
         </li>
